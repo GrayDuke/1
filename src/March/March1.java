@@ -5,12 +5,12 @@ package March;
  */
 
 interface Executable{
-    int execute();
+    int execute(int x);
 }
 
 class Runner{
     public void run(Executable e){
-        int a = e.execute();
+        int a = e.execute(10);
         System.out.println(a);
     }
 }
@@ -21,15 +21,15 @@ public class March1 {
 
         runner.run(new Executable() {
             @Override
-            public int execute() {
+            public int execute(int x) {
                 System.out.println("Hello, bestie");
-                return 1;
+                return x+1;
             }
         });
 
-        runner.run(() -> {
+        runner.run((int x) -> {
             System.out.println("Hi");
-            return 2;
+            return x+2;
         });
     }
 }
