@@ -1,35 +1,48 @@
 package March;
 //Лямбда-выражения часть1
 /**
-    @author Pavel Sergeev
+ @author Pavel Sergeev
  */
-
-interface Executable{
-    int execute(int x);
-}
-
-class Runner{
-    public void run(Executable e){
-        int a = e.execute(10);
-        System.out.println(a);
-    }
-}
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class March1 {
     public static void main(String[] args) throws InterruptedException {
-        Runner runner = new Runner();
+        List<String> list = new ArrayList<>();
+        list.add("Hello");
+        list.add("good");
+        list.add("a");
 
-        runner.run(new Executable() {
-            @Override
-            public int execute(int x) {
-                System.out.println("Hello, bestie");
-                return x+1;
-            }
-        });
+//        list.sort(new Comparator<String>() {
+//            @Override
+//            public int compare(String o1, String o2) {
+//                if(o1.length()>o2.length()){
+//                    return 1;
+//                }else if(o1.length()<o2.length()){
+//                    return -1;
+//                }else return 0;
+//            }
+//        });
+//        list.sort((o1,o2)-> {
+//            if(o1.length()>o2.length()){
+//                return 1;
+//            }else if(o1.length()<o2.length()){
+//                return -1;
+//            }else return 0;
+//        });
 
-        runner.run((int x) -> {
-            System.out.println("Hi");
-            return x+2;
-        });
+        Comparator<String> comparator = (o1,o2)-> {
+            if(o1.length()>o2.length()){
+                return 1;
+            }else if(o1.length()<o2.length()){
+                return -1;
+            }else return 0;
+        };
+        list.sort(comparator);
+
+
+        System.out.println(list);
+
     }
 }
